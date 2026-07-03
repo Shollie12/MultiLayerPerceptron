@@ -49,6 +49,38 @@ n = np.ones(5)
 t = torch.from_numpy(n)
 
 #******************************************************************
+#loading a dataset and Dataloaders
+
 #"datasets and dataloaders are used to load data into the model for training and testing"
 #-chud gpt
+
+#just added this to my GitHub so you KNOW it's serious now 7/2/26
+
+from torch.utils.data import Dataset
+from torchvision import datasets
+from torchvision.transforms import v2
+import matplotlib.pyplot as plt
+#I should have just imported all the stuff I need to use a dataset
+#lets make the training and test data for the MNIST dataset
+
+training_data = datasets.MNIST(
+    root="data",
+    train = True,
+    download = True,
+    transform=v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale = True)])
+)
+#sweet, MNIST from datasets has been initialized to root as data, marked as training, downloaded, and transformed to usable data I assume
+
+test_data = datasets.MNIST(
+    root = "data",
+    train = False,
+    download=True,
+    transform=v2.Compose([v2.ToImage(), v2.ToDtype(torch.float32, scale = True)])
+)
+
+#okay now the test and training data is loaded into the program
+
+#uh how the heck do I visualize this dataset?
+
+
 
